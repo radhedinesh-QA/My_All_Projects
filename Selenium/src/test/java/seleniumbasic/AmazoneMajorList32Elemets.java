@@ -20,14 +20,21 @@ public class AmazoneMajorList32Elemets {
 	        driver.get("https://www.amazon.in/");
 	        driver.manage().window().maximize();
 
-	        Thread.sleep(3000);
+	        Thread.sleep(5000);
 
-	        String xpath = "//div[@id='nav-xshop']/child::ul/li//a";
+	        String xp = "//div[@id='nav-xshop']//li//a";
 
-	        List<WebElement> elements = driver.findElements(By.xpath(xpath));
+	        List<WebElement> elements = driver.findElements(By.xpath(xp));
 	        System.out.println("Total elements located: " + elements.size());
-
-	        JavascriptExecutor js = (JavascriptExecutor) driver;
+	      int ct = 1;
+	        for(WebElement es : elements)
+	        {
+	        	System.out.println(ct+" "+ es.getText());
+	        	ct++;
+	        }
+	        System.out.println("--------------------");
+	        
+	       JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	        int count = 1;
 	        for (WebElement element : elements) {
@@ -37,18 +44,13 @@ public class AmazoneMajorList32Elemets {
 	                    "return arguments[0].textContent;", element);
 
 	            text = text.trim();
-	            
-	            if(text.equalsIgnoreCase("Mobiles"))
-	            {
-	            	element.click();
-	            	break;
-	            }
-
+	           
 	            if (!text.isEmpty()) {
 	                System.out.println(count + ". " + text);
 	                count++;
 	            }
 	        }
+	        
 
 	        driver.quit();
 	}
