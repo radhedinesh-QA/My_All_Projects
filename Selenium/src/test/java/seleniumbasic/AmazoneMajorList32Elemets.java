@@ -26,13 +26,7 @@ public class AmazoneMajorList32Elemets {
 
 	        List<WebElement> elements = driver.findElements(By.xpath(xp));
 	        System.out.println("Total elements located: " + elements.size());
-	      int ct = 1;
-	        for(WebElement es : elements)
-	        {
-	        	System.out.println(ct+" "+ es.getText());
-	        	ct++;
-	        }
-	        System.out.println("--------------------");
+	      
 	        
 	       JavascriptExecutor js = (JavascriptExecutor) driver;
 
